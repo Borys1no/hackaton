@@ -1,9 +1,9 @@
-// Import the functions you need from the SDKs you need
+// Importa las funciones necesarias de los SDKs
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyA3D72Ty30HfcrLtuPxHDghQDoQ30OJAmI",
   authDomain: "hackaton-2cae6.firebaseapp.com",
@@ -13,5 +13,16 @@ const firebaseConfig = {
   appId: "1:988457717083:web:334d7db5445cd12dec5e7e"
 };
 
-// Initialize Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
+
+// Inicializa los servicios de Firebase
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+// Define y exporta la función para crear un usuario con email y contraseña
+export const doCreateUserWithEmailAndPassword = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export default app;
